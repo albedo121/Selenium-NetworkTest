@@ -9,39 +9,42 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TestPage_Fast {
 
-    //Constructor - Store passed driver instance into driver
-    /*public TestPage_Fast(WebDriver driver){
-        this.driver = driver;
-    } */
+    //To disable selenium warnings and keep console clean.
+    static {
+        Logger.getLogger("org.openqa.selenium")
+                .setLevel(Level.SEVERE);
+    }
 
-    //Start Test
+    //Start Test function
     public void startTest() throws InterruptedException {
 
-        WebDriver driver = new ChromeDriver();
+        //Initialize setup before test
+        WebDriver driver = new ChromeDriver();  //Open chrome browser
         String url = "https://fast.com/";
         driver.manage().window().maximize();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  //Explicit wait of 20s
 
         //Go to url
         driver.get(url);
 
         // Displaying speed test status message and going to new line for better readability
-        System.out.println("*** FAST.COM - SPEED TEST IN PROGRESS. PLEASE WAIT... ***");
+        System.out.println("***** FAST.COM *****");
 
         //Locators for download speed display elements: value and its corresponding unit
         By DownloadSpeedValue_Locator = By.id("speed-value");
         By DownloadSpeedUnit_Locator = By.id("speed-units");
 
-        //Explicit wait of 10s
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         //Here we will keep printing the speed values on console when test is in progress
-        System.out.println("Download speed--> ");
+        System.out.print("Download speed test in progress --> ");
+        Thread.sleep(1000);
         while(true)
         {
-            Thread.sleep(500);  //Putting sleep so that console is not flooded
+            Thread.sleep(400);  //Putting sleep so that console is not flooded
             //Find speed and unit element
             WebElement DownloadSpeedValue_Element = wait.until(ExpectedConditions.visibilityOfElementLocated(DownloadSpeedValue_Locator));
             WebElement DownloadSpeedUnit_Element = wait.until((ExpectedConditions.visibilityOfElementLocated(DownloadSpeedUnit_Locator)));
@@ -67,7 +70,7 @@ public class TestPage_Fast {
         By UploadSpeedUnit_Locator = By.id("upload-units");
 
         //Wait for upload test to be over
-        System.out.println("Upload speed--> ");
+        System.out.print("Upload speed test in progress --> ");
         while(true)
         {
             Thread.sleep(1800);  //Putting sleep so that console is not flooded
@@ -100,11 +103,11 @@ public class TestPage_Fast {
         System.out.println("********** FINAL TEST RESULTS **********");
         System.out.println("Download Speed- " + driver.findElement(DownloadSpeedValue_Locator).getText() + " " + driver.findElement(DownloadSpeedUnit_Locator).getText());
         System.out.println("Upload Speed- " + driver.findElement(UploadSpeedValue_Locator).getText() + " " + driver.findElement(UploadSpeedUnit_Locator).getText());
-        System.out.println("Unloaded Latency: " + driver.findElement(UnloadedLatencyValue_Locator).getText() + " " + driver.findElement(UnloadedLatencyUnit_Locator).getText());
-        System.out.println("Loaded Latency: " + driver.findElement(LoadedLatencyValue_Locator).getText() + " " + driver.findElement(LoadedLatencyUnit_Locator).getText());
-        System.out.println("Client Location: " + driver.findElement(ClientLocation_Locator).getText());
-        System.out.println("Client IP: " + driver.findElement(ClientIp_Locator).getText());
-        System.out.println("Server(s): " + driver.findElement(ServerInfo_Locator).getText());
+        System.out.println("Unloaded Latency- " + driver.findElement(UnloadedLatencyValue_Locator).getText() + " " + driver.findElement(UnloadedLatencyUnit_Locator).getText());
+        System.out.println("Loaded Latency- " + driver.findElement(LoadedLatencyValue_Locator).getText() + " " + driver.findElement(LoadedLatencyUnit_Locator).getText());
+        System.out.println("Client Location- " + driver.findElement(ClientLocation_Locator).getText());
+        System.out.println("Client IP- " + driver.findElement(ClientIp_Locator).getText());
+        System.out.println("Server(s)- " + driver.findElement(ServerInfo_Locator).getText());
 
         Thread.sleep(5000);
         driver.quit();
