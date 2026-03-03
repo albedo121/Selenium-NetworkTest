@@ -21,17 +21,17 @@ public class TestPage_PacketLoss {
     }
 
     public void startTest(){
-
-        //Initialize setup before test
+        //INITIALIZE SELENIUM AND SETUP--------------------------------------
         WebDriver driver = new ChromeDriver();
-        String url = "https://packetlosstest.com/";
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));  //Explicit wait of 120s
 
+        //TEST BEGINS FROM HERE----------------------------------------------
         //Go to url
+        String url = "https://packetlosstest.com/";
         driver.get(url);
 
-        //Pre test locators stored here
+        //Locators- pre test
         By Button_Locator = By.id("start");  //Start test button
         By Result_Locator = By.id("results");  //Result section
         By Server_Locator = By.id("server");  //Server dropdown

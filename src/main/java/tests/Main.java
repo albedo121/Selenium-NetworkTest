@@ -1,11 +1,9 @@
 package tests;
 
-import org.openqa.selenium.WebDriver;
 import pages.TestPage_Fast;
 import pages.TestPage_Ookla;
 import pages.TestPage_PacketLoss;
 
-import java.sql.Driver;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +17,7 @@ public class Main {
         {
             System.out.println("WELCOME TO NETWORK TEST. PLEASE CHOOSE TEST TO PERFORM-");
             System.out.println("1 - Speed test - Fast.com");
-            System.out.println("2 - Speed test - Speedtest.net");
+            System.out.println("2 - Speed test - Speedtest.net (Ookla)");
             System.out.println("3 - Packet loss test - PacketLoss.com");
 
             //Get user input
@@ -34,7 +32,8 @@ public class Main {
                     break;
 
                 case 2:
-                    TestPage_Ookla OolkaTest = new TestPage_Ookla();
+                    TestPage_Ookla OoklaTest = new TestPage_Ookla();
+                    OoklaTest.startTest();
                     break;
 
                 case 3:

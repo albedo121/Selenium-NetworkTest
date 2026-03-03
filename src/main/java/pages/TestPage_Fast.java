@@ -22,14 +22,14 @@ public class TestPage_Fast {
 
     //Start Test function
     public void startTest() throws InterruptedException {
-
-        //Initialize setup before test
+        //INITIALIZE SELENIUM AND SETUP--------------------------------------
         WebDriver driver = new ChromeDriver();  //Open chrome browser
-        String url = "https://fast.com/";
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));  //Explicit wait of 20s
 
+        //TEST BEGINS FROM HERE----------------------------------------------
         //Go to url
+        String url = "https://fast.com/";
         driver.get(url);
 
         // Displaying speed test status message and going to new line for better readability
