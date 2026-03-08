@@ -1,5 +1,6 @@
 package tests;
 
+import pages.TestPage_Dns;
 import pages.TestPage_Fast;
 import pages.TestPage_Ookla;
 import pages.TestPage_PacketLoss;
@@ -19,6 +20,7 @@ public class Main {
             System.out.println("1 - Speed test - Fast.com");
             System.out.println("2 - Speed test - Speedtest.net (Ookla)");
             System.out.println("3 - Packet loss test - PacketLoss.com");
+            System.out.println("4 - DNS speed test - Dnsspeedtest.online");
 
             //Get user input
             int choice = input.nextInt();
@@ -39,6 +41,11 @@ public class Main {
                 case 3:
                     TestPage_PacketLoss PacketLossTest = new TestPage_PacketLoss();
                     PacketLossTest.startTest();
+                    break;
+
+                case 4:
+                    TestPage_Dns DnsTest = new TestPage_Dns();
+                    DnsTest.startTest();
                     break;
 
                 default:
